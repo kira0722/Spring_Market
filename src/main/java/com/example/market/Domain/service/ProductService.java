@@ -45,6 +45,9 @@ public class ProductService {
 //        }else {
 //            return false;
 //        }
+    }
 
+    public Optional<List<Product>> getScarseProducts (int quantity){
+        return productRepository.getScarseProducts(quantity);
     }
 }
