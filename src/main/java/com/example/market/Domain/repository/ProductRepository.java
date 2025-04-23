@@ -10,6 +10,6 @@ public interface ProductRepository {
     Optional<List<Product>> geByCategory(int categoryId);
     Optional<List<Product>> getScarseProducts(int quantity);
     Optional<Product> getProduct(int productId);
-    Product save (Product product);
+    Product save(Product product);
     void delete(int productId);
 }

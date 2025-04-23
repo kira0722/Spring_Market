@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Repository
 public class ProductRepository implements com.example.market.Domain.repository.ProductRepository {
+
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
 
@@ -55,7 +56,4 @@ public class ProductRepository implements com.example.market.Domain.repository.P
     public void delete(int productId){
         productoCrudRepository.deleteById(productId);
     }
-
-
-
 }
