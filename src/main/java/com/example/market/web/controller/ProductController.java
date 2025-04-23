@@ -70,8 +70,9 @@ public class ProductController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-//    public boolean delete(@PathVariable("id") int prodcutId){
-//        return productService.delete(prodcutId);
-//    }
+    //version 1
+    //    public boolean delete(@PathVariable("id") int prodcutId){
+    //        return productService.delete(prodcutId);
+    //    }
 
 }
