@@ -2,6 +2,11 @@ package com.example.market.web.controller;
 
 import com.example.market.Domain.Product;
 import com.example.market.Domain.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -13,12 +18,15 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
+@Tag(name = "Products")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @GetMapping("/all")
+    @Operation(summary = "Get all the data of Products")
+    @ApiResponse(responseCode = "202", description = "okidokitokitoki")
     public ResponseEntity<List<Product>> getAll(){
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
@@ -30,7 +38,12 @@ public class ProductController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable("id") int productId){
+    @Operation(summary = "get a data information by id")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "ok"),
+            @ApiResponse(responseCode = "404", description = "NOT_FOUND")
+    })
+    public ResponseEntity<Product> getProduct(@Parameter(description = "the id of the product",allowEmptyValue = false, required = true, example = "7") @PathVariable("id") int productId){
         return productService.getProduct(productId).map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

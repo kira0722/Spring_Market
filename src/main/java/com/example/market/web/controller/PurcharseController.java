@@ -2,6 +2,7 @@ package com.example.market.web.controller;
 
 import com.example.market.Domain.Purchase;
 import com.example.market.Domain.service.PurcharseService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/purchases")
+@Tag(name = "Purcharses")
 public class PurcharseController {
 
     @Autowired
